@@ -1,0 +1,64 @@
+{
+  "name": "bellink-mcp",
+  "version": "1.0.0",
+  "description": "Connect AI assistants to 30+ business tools — Gmail, Google Calendar, Sheets, Mindbody, Meta Ads, Linear, Airtable, and more. One MCP server, every app.",
+  "type": "module",
+  "bin": {
+    "bellink-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "bellink",
+    "ai",
+    "ai-tools",
+    "claude",
+    "chatgpt",
+    "cursor",
+    "perplexity",
+    "openclaw",
+    "mindbody",
+    "gmail",
+    "google-calendar",
+    "google-sheets",
+    "meta-ads",
+    "linear",
+    "airtable",
+    "notion",
+    "stripe",
+    "business-tools",
+    "ai-gateway",
+    "ai-agent"
+  ],
+  "author": {
+    "name": "Bellink",
+    "url": "https://www.bellink.io"
+  },
+  "license": "MIT",
+  "homepage": "https://www.bellink.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barflotek/bellink-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/barflotek/bellink-mcp/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.9.3"
+  }
+}
