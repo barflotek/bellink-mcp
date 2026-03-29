@@ -94,9 +94,9 @@ Your credentials are encrypted with AES-256. Bellink uses OAuth — we never see
 
 ## Pricing
 
-- **14-day free trial** — no credit card required
-- **Personal**: $29/mo — all apps, 1,000 requests/month
-- **Team**: $79/mo — multiple users, 5,000 requests/month
+- **Starter**: Free forever — all apps (except Mindbody), 250 requests/month
+- **Personal**: $29/mo — all apps including Mindbody, 1,000 requests/month
+- **Business**: $99/mo — all apps, 10K requests/month, 5 seats
 
 ## Links
 

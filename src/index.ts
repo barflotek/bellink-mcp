@@ -34,19 +34,24 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 
 const BELLINK_URL = process.env.BELLINK_URL || "";
+const BELLINK_KEY = process.env.BELLINK_KEY || "";
 
-if (!BELLINK_URL) {
+if (!BELLINK_URL && !BELLINK_KEY) {
   console.error(`
 bellink-mcp — AI gateway to your business tools
 
-  Missing BELLINK_URL environment variable.
+  Missing BELLINK_URL or BELLINK_KEY environment variable.
 
   1. Sign up at https://app.bellink.io (free trial)
   2. Connect your apps (Gmail, Mindbody, etc.)
   3. Copy your Bellink URL from the dashboard
   4. Set it:
 
-     BELLINK_URL=your-url npx bellink-mcp
+     BELLINK_KEY=your-api-key npx bellink-mcp
+
+  Or use the full URL:
+
+     BELLINK_URL=https://app.bellink.io/api/mcp/server?key=xxx npx bellink-mcp
 
   30+ apps. One URL. Every AI platform.
 `);
@@ -60,8 +65,23 @@ async function main() {
     { capabilities: {} }
   );
 
-  const url = new URL(BELLINK_URL);
-  const sseTransport = new SSEClientTransport(url);
+  // Build connection URL and headers
+  const baseUrl = BELLINK_URL || "https://app.bellink.io/api/mcp/server";
+  const url = new URL(baseUrl);
+
+  // If BELLINK_KEY is set, add it as query param (server accepts ?key=)
+  if (BELLINK_KEY && !url.searchParams.has("key")) {
+    url.searchParams.set("key", BELLINK_KEY);
+  }
+
+  const headers: Record<string, string> = {};
+  if (BELLINK_KEY) {
+    headers["Authorization"] = `Bearer ${BELLINK_KEY}`;
+  }
+
+  const sseTransport = new SSEClientTransport(url, {
+    requestInit: { headers },
+  });
 
   try {
     await remoteClient.connect(sseTransport);

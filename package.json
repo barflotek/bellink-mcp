@@ -1,6 +1,6 @@
 {
   "name": "bellink-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Connect AI assistants to 30+ business tools — Gmail, Google Calendar, Sheets, Mindbody, Meta Ads, Linear, Airtable, and more. One MCP server, every app.",
   "type": "module",
   "bin": {
